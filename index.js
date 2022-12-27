@@ -12,7 +12,9 @@ app.use(
 )
 
 app.get('/', (request, response) => {
+    console.log("запрос")
     response.json({info: 'Node.js, Express, and Postgres API'})
+    console.log("конец запроса")
 })
 
 // app.get('/users', db.getUsers)
