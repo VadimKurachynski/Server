@@ -1,12 +1,13 @@
 const express=require('express');
+const userRouter=require('./router/routes')
 const PORT=3000;
 const app=express();
 
-app.get('/',(req,res)=>{
-  res.send('Server started!')
-})
+// app.get('/',(req,res)=>{
+//   res.send('Server started!')
+// })
 
-
+app.use('/api',userRouter)
 
 
 

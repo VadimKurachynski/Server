@@ -1,4 +1,4 @@
-class Controller{
+class UserController{
     async createT(req,res){
 
     }
