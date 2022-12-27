@@ -1,15 +1,26 @@
-const express=require('express');
-const userRouter=require('./router/routes')
-const PORT=3000;
-const app=express();
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const db = require('./queries')
+const port = 3000
 
-// app.get('/',(req,res)=>{
-//   res.send('Server started!')
-// })
+app.use(bodyParser.json())
+app.use(
+    bodyParser.urlencoded({
+        extended: true,
+    })
+)
 
-app.use('/api',userRouter)
+app.get('/', (request, response) => {
+    response.json({info: 'Node.js, Express, and Postgres API'})
+})
 
-
-
-app.listen(PORT,()=>console.log(`Server started on port ${PORT}`));
-
+app.get('/users', db.getUsers)
+app.get('/users/:id', db.getUserById)
+app.post('/users', db.createUser)
+app.put('/users/:id', db.updateUser)
+app.delete('/users/:id', db.deleteUser)
+app.get('/nom', db.getQuestion)
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`)
+})
