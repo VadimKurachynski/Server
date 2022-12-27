@@ -4,8 +4,8 @@
   "description": "",
   "main": "index222.js",
   "scripts": {
-    "start": "node index222.js",
-    "dev": "nodemon index222.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
