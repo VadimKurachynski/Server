@@ -1,8 +1,6 @@
 
 const pool=require('./db');
 
-
-
 const getQuestion = (request, response) => {
     const id = parseInt(request.params.id)
     pool.query('SELECT * FROM tema111 WHERE nomvoprosa = $1', [id], (error, results) => {
