@@ -2,7 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const db = require('./queries')
+
+cookieParser = require('cookie-parser')
 const port = 3001
+
 
 app.use(bodyParser.json())
 app.use(
@@ -10,11 +13,22 @@ app.use(
         extended: true,
     })
 )
+app.use(cookieParser('secret key'))
 
-app.get('/', (request, response) => {
-    console.log("запрос")
-    response.json({info: 'Node.js, Express, and Postgres API'})
-    console.log("конец запроса")
+// app.get('/', (req, res) => {
+//     response.json({info: 'Node.js, Express, and Postgres API'})
+// })
+
+
+
+app.get('/cook', (req, res) => {
+
+    res.cookie('token', '12345ABCDE')
+    res.send('Set Cookie-установили')
+})
+app.get('/cook', (req, res) => {
+    console.log('Cookie: ', req.cookies)
+    res.send('Get Cookie-ПРИНЯЛИ КУКИ')
 })
 
 // app.get('/users', db.getUsers)
