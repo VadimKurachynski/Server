@@ -22,7 +22,6 @@ app.use(cookieParser('secret key'))
 
 
 app.get('/cook', (req, res) => {
-
     res.cookie('token', '12345ABCDE')
     res.send('Set Cookie-установили')
 })
