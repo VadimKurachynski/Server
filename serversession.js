@@ -10,6 +10,9 @@ app.use(session({
 }))
 
 app.get("/",(req,res)=>{
+    req.session.isAuth=true;
+    req.session.is=false;
+    req.session.hello=67;
     console.log(req.session);
     res.send("Hello Session");
 });
