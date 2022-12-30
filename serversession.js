@@ -1,5 +1,6 @@
 const express =require('express');
 const session=require('express-session');
+const mongoose=require("mongoose");
 const app =express();
 const port = 5000;
 
@@ -14,6 +15,7 @@ app.get("/",(req,res)=>{
     req.session.is=false;
     req.session.hello=67;
     console.log(req.session);
+    console.log(req.session.id);
     res.send("Hello Session");
 });
 
