@@ -4,11 +4,17 @@ const mongoose=require("mongoose");
 const app =express();
 const port = 5000;
 
-mongoose.connect('mongodb://Localhost:27017/sessions',{
+mongoose.set("strictQuery", false);
+mongoose.connect('mongodb://localhost:27017/sessions',{
     useNewUrlParser: true,
-    useCreateIndex: true,
+   // useCreateIndex: true,
     useUnifiedTopology: true
 })
+    .then((res)=>{
+    console.log("MongoDB Connected");
+});
+
+
 
 app.use(session({
     secret:'key this key',
