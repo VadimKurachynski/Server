@@ -4,6 +4,13 @@ const mongoose=require("mongoose");
 const app =express();
 const port = 5000;
 
+mongoose.connect('mongodb://Localhost:27017/sessions',{
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
+})
+
+
 app.use(session({
     secret:'key this key',
     resave:false,
@@ -11,9 +18,9 @@ app.use(session({
 }))
 
 app.get("/",(req,res)=>{
-    req.session.isAuth=true;
-    req.session.is=false;
-    req.session.hello=67;
+     req.session.isAuth=true;
+     req.session.is=false;
+     req.session.hello=67;
     console.log(req.session);
     console.log(req.session.id);
     res.send("Hello Session");
