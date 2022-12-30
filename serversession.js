@@ -19,7 +19,6 @@ app.get("/",(req,res)=>{
     res.send("Hello Session");
 });
 
-
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
 })
