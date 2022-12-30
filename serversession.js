@@ -10,7 +10,6 @@ mongoose.connect('mongodb://Localhost:27017/sessions',{
     useUnifiedTopology: true
 })
 
-
 app.use(session({
     secret:'key this key',
     resave:false,
