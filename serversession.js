@@ -1,39 +1,50 @@
-const express = require('express');
-const session = require('express-session');
-const MongoDBSession = require('connect-mongodb-session')(session);
-const mongoose = require("mongoose");
+const express = require("express");
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
+const config = require("config");
+
+const appController = require("./controllers/appController");
+const isAuth = require("./middleware/is-auth");
+const connectDB = require("./config/db");
+const mongoURI = config.get("mongoURI");
+
 const app = express();
-const UserModel=require("./models/User");
+connectDB();
 
-const port = 5000;
-const mongoURI = 'mongodb://localhost:27017/sessions'
-
-mongoose.set("strictQuery", false);
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    // useCreateIndex: true,
-    useUnifiedTopology: true
-}).then((res) => {
-    console.log("MongoDB Connected");
-});
-const store = new MongoDBSession({
+const store = new MongoDBStore({
     uri: mongoURI,
-    collection: 'mySessions',
-})
-app.use(session({
-    secret: 'key this key',
-    resave: false,
-    saveUninitialized: false,
-    store: store,
-}))
-app.get("/", (req, res) => {
-    req.session.isAuth = true;
-    req.session.is = false;
-    req.session.hello = 67;
-    console.log(req.session);
-    console.log(req.session.id);
-    res.send("Hello Session");
+    collection: "mySessions",
 });
+
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+
+app.use(
+    session({
+        secret: "secret",
+        resave: false,
+        saveUninitialized: false,
+        store: store,
+    })
+);
+
+//=================== Routes
+// Landing Page
+app.get("/", appController.landing_page);
+
+// Login Page
+app.get("/login", appController.login_get);
+app.post("/login", appController.login_post);
+
+// Register Page
+app.get("/register", appController.register_get);
+app.post("/register", appController.register_post);
+
+// Dashboard Page
+app.get("/dashboard", isAuth, appController.dashboard_get);
+
+app.post("/logout", appController.logout_post);
+
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
 })
