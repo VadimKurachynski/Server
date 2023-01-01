@@ -2,7 +2,6 @@ const express = require("express");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const config = require("config");
-
 const appController = require("./controllers/appController");
 const isAuth = require("./middleware/is-auth");
 const connectDB = require("./config/db");
@@ -10,7 +9,6 @@ const mongoURI = config.get("mongoURI");
 const port = 5000;
 const app = express();
 connectDB();
-
 const store = new MongoDBStore({
     uri: mongoURI,
     collection: "mySessions",
@@ -44,6 +42,11 @@ app.post("/register", appController.register_post);
 app.get("/dashboard", isAuth, appController.dashboard_get);
 
 app.post("/logout", appController.logout_post);
+
+
+
+app.get("/api/auth",appController.ApiAuth_get);
+
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
