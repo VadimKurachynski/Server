@@ -3,6 +3,8 @@ const session = require('express-session');
 const MongoDBSession = require('connect-mongodb-session')(session);
 const mongoose = require("mongoose");
 const app = express();
+const UserModel=require("./models/User");
+
 const port = 5000;
 const mongoURI = 'mongodb://localhost:27017/sessions'
 
