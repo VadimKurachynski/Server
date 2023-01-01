@@ -7,7 +7,7 @@ const appController = require("./controllers/appController");
 const isAuth = require("./middleware/is-auth");
 const connectDB = require("./config/db");
 const mongoURI = config.get("mongoURI");
-
+const port = 5000;
 const app = express();
 connectDB();
 
