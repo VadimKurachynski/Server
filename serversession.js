@@ -1,11 +1,13 @@
 const express =require('express');
 const session=require('express-session');
+const MongoDBSession=require('connect-mongodb-session')(session);
 const mongoose=require("mongoose");
 const app =express();
 const port = 5000;
+const mongoURI='mongodb://localhost:27017/sessions'
 
 mongoose.set("strictQuery", false);
-mongoose.connect('mongodb://localhost:27017/sessions',{
+mongoose.connect(mongoURI,{
     useNewUrlParser: true,
    // useCreateIndex: true,
     useUnifiedTopology: true
@@ -14,11 +16,16 @@ mongoose.connect('mongodb://localhost:27017/sessions',{
     console.log("MongoDB Connected");
 });
 
+const store=new MongoDBSession({
+    uri:mongoURI,
+    collection: 'mySessions',
+})
 
 app.use(session({
     secret:'key this key',
     resave:false,
-    saveUninitialized:false
+    saveUninitialized:false,
+    store:store,
 }))
 
 app.get("/",(req,res)=>{
