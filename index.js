@@ -19,8 +19,6 @@ app.use(cookieParser('secret key'))
 //     response.json({info: 'Node.js, Express, and Postgres API'})
 // })
 
-
-
 app.get('/cook', (req, res) => {
     res.cookie('token', '12345ABCDE')
     res.send('Set Cookie-установили')
