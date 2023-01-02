@@ -44,7 +44,6 @@ app.get("/dashboard", isAuth, appController.dashboard_get);
 app.post("/logout", appController.logout_post);
 
 
-
 app.get("/api/auth",appController.ApiAuth_get);
 
 
