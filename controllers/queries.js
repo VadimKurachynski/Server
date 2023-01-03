@@ -1,9 +1,23 @@
 
 const pool=require('../config/dbPg');
 
+// const getQuestion = (req, res) => {
+//     const id = parseInt(req.params.id)
+//     pool.query('SELECT * FROM tema111 WHERE nomvoprosa = $1', [id], (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         res.status(200).json(results.rows)
+//     })
+// }
+
 const getQuestion = (req, res) => {
-    const id = parseInt(req.params.id)
-    pool.query('SELECT * FROM tema111 WHERE nomvoprosa = $1', [id], (error, results) => {
+   // const id = parseInt(req.params.id)
+    let tema ="tema111";
+    const id =5;
+
+
+    pool.query('SELECT * FROM $1 WHERE nomvoprosa = 1', [tema], (error, results) => {
         if (error) {
             throw error
         }
@@ -36,7 +50,7 @@ const getQuestion = (req, res) => {
 //         if (error) {
 //             throw error
 //         }
-//         response.status(201).send(`User added with ID: ${results.insertId}`)
+//         response.status(201).send('User added with ID: ${results.insertId}`)
 //     })
 // }
 //

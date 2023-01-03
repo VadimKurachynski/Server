@@ -47,8 +47,10 @@ app.post("/logout", appController.logout_post);
 
 //------------------------------------------------------------
 app.get("/api/auth",appController.ApiAuth_get);//authentication
-app.get('/api/nom/:id',isAuth, dbPg.getQuestion);//access to questions
+app.get('/api/nom',isAuth, dbPg.getQuestion);//access to questions
 //------------------------------------------------------------
+
+
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
