@@ -28,9 +28,18 @@ const getQuestion = (req, res) => {
 
 const postQuestion = (req, res) => {
     const {tema, nv} = req.body
+    console.log(req.body);
+    console.log(tema,nv);
+    // res.status(200).json(req.body)
     pool.query(`SELECT * FROM ${tema} WHERE nomvoprosa = $1`, [nv], (error, results) => {
         if (error) {
-            throw error
+            throw error;
+        }
+     //   res.status(200).json(results.rows)
+    })
+    pool.query(`SELECT count(*) FROM ${tema}`, (error, results) => {
+        if (error) {
+            throw error;
         }
         res.status(200).json(results.rows)
     })
@@ -101,4 +110,5 @@ module.exports = {
     // updateUser,
     // deleteUser,
     getQuestion,
+    postQuestion,
 }
