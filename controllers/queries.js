@@ -35,8 +35,12 @@ const postQuestion = (req, res) => {
         if (error) {
             throw error;
         }
-     //   res.status(200).json(results.rows)
+        res.status(200).json(results.rows)
     })
+
+}
+
+const postAmountCount = (req, res) => {
     pool.query(`SELECT count(*) FROM ${tema}`, (error, results) => {
         if (error) {
             throw error;
@@ -44,8 +48,6 @@ const postQuestion = (req, res) => {
         res.status(200).json(results.rows)
     })
 }
-
-
 
 // const getUsers = (request, response) => {
 //     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
@@ -111,4 +113,5 @@ module.exports = {
     // deleteUser,
     getQuestion,
     postQuestion,
+    postAmountCount,
 }
