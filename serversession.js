@@ -6,10 +6,10 @@ const config = require("config");
 const appController = require("./controllers/appController");
 const isAuth = require("./middleware/is-auth");
 const connectDB = require("./config/dbMn");
-const dbPg = require('./queries');
+const dbPg = require('./controllers/queries');
 const mongoURI = config.get("mongoURI");
-const port = 5000;
 const app = express();
+const port = 5000;
 connectDB();
 const store = new MongoDBStore({
     uri: mongoURI,
@@ -45,9 +45,8 @@ app.post("/register", appController.register_post);
 app.get("/dashboard", isAuth, appController.dashboard_get);
 app.post("/logout", appController.logout_post);
 
-
 //------------------------------------------------------------
-app.get("/api/auth",appController.ApiAuth_get);//authу
+app.get("/api/auth",appController.ApiAuth_get);//authentication
 app.get('/api/nom/:id',isAuth, dbPg.getQuestion);//access to questions
 //------------------------------------------------------------
 

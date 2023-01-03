@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const db = require('./queries')
+const db = require('./controllers/queries')
 
 cookieParser = require('cookie-parser')
 const port = 3001

@@ -1,5 +1,5 @@
 
-const pool=require('./config/dbPg');
+const pool=require('../config/dbPg');
 
 const getQuestion = (req, res) => {
     const id = parseInt(req.params.id)
