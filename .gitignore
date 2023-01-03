@@ -1,4 +1,4 @@
 /node_modules
-/db.js
-db.js
+/config/dbPg.js
+config/dbPg.js
 /config

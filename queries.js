@@ -1,13 +1,13 @@
 
-const pool=require('./db');
+const pool=require('./config/dbPg');
 
-const getQuestion = (request, response) => {
-    const id = parseInt(request.params.id)
+const getQuestion = (req, res) => {
+    const id = parseInt(req.params.id)
     pool.query('SELECT * FROM tema111 WHERE nomvoprosa = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(200).json(results.rows)
+        res.status(200).json(results.rows)
     })
 }
 
@@ -68,10 +68,10 @@ const deleteUser = (request, response) => {
 }
 
 module.exports = {
-    getUsers,
-    getUserById,
-    createUser,
-    updateUser,
-    deleteUser,
+    // getUsers,
+    // getUserById,
+    // createUser,
+    // updateUser,
+    // deleteUser,
     getQuestion,
 }
