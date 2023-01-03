@@ -13,10 +13,10 @@ const pool=require('../config/dbPg');
 
 const getQuestion = (req, res) => {
    // const id = parseInt(req.params.id)
-    console.log(req.params)
-    let tema ="tema111";
-    const nv =5;
-
+   //  console.log(req.query.t)
+   //  console.log(req.query.nv)
+    let tema =req.query.t;
+    const nv =req.query.nv;
 
     pool.query(`SELECT * FROM ${tema} WHERE nomvoprosa = $1`, [nv], (error, results) => {
         if (error) {
@@ -25,6 +25,18 @@ const getQuestion = (req, res) => {
         res.status(200).json(results.rows)
     })
 }
+
+const postQuestion = (req, res) => {
+    const {tema, nv} = req.body
+    pool.query(`SELECT * FROM ${tema} WHERE nomvoprosa = $1`, [nv], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).json(results.rows)
+    })
+}
+
+
 
 // const getUsers = (request, response) => {
 //     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {

@@ -47,8 +47,10 @@ app.post("/logout", appController.logout_post);
 
 //------------------------------------------------------------
 app.get("/api/auth",appController.ApiAuth_get);//authentication
-app.get('/api/nom',isAuth, dbPg.getQuestion);//access to questions
+app.get('/api/nom', dbPg.getQuestion);//access to questions
+// app.post('/api/post', dbPg.postQuestion);//access to questions
 //------------------------------------------------------------
+
 
 
 
