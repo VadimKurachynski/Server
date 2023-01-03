@@ -13,11 +13,12 @@ const pool=require('../config/dbPg');
 
 const getQuestion = (req, res) => {
    // const id = parseInt(req.params.id)
+    console.log(req.params)
     let tema ="tema111";
-    const id =5;
+    const nv =5;
 
 
-    pool.query('SELECT * FROM $1 WHERE nomvoprosa = 1', [tema], (error, results) => {
+    pool.query(`SELECT * FROM ${tema} WHERE nomvoprosa = $1`, [nv], (error, results) => {
         if (error) {
             throw error
         }
