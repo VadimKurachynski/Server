@@ -1,7 +1,6 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 
-
 exports.landing_page = (req, res) => {
     res.render("landing");
 };
@@ -75,8 +74,6 @@ exports.logout_post = (req, res) => {
     });
 };
 //------------------------------------
-
-
 
 exports.ApiAuth_get = (req, res) => {
     (req.session.isAuth) ? res.status(200).json({ Auth: 1 }):res.status(200).json({ Auth: 0 });
