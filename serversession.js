@@ -28,7 +28,6 @@ app.use(
         store: store,
     })
 );
-
 //=================== Routes
 // Landing Page
 app.get("/", appController.landing_page);

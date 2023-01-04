@@ -41,6 +41,7 @@ const postQuestion = (req, res) => {
 }
 
 const postAmountCount = (req, res) => {
+    const {tema} = req.body
     pool.query(`SELECT count(*) FROM ${tema}`, (error, results) => {
         if (error) {
             throw error;
