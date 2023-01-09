@@ -1,22 +1,40 @@
 
 const pool=require('../config/dbPg');
 
-// const getQuestion = (req, res) => {
-//     const id = parseInt(req.params.id)
-//     pool.query('SELECT * FROM tema111 WHERE nomvoprosa = $1', [id], (error, results) => {
-//         if (error) {
-//             throw error
-//         }
-//         res.status(200).json(results.rows)
-//     })
-// }
+
+const getQuestionAllName = (req, res) => {
+    let tema='themesAllName';
+    pool.query(`SELECT * FROM ${tema}`, (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).json(results.rows)
+    })
+}
+
+
+
+
+const getQuestionAll = (req, res) => {
+    let tema='tema111';
+    pool.query(`SELECT * FROM ${tema}`, (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).json(results.rows)
+    })
+}
+
+
 
 const getQuestion = (req, res) => {
    // const id = parseInt(req.params.id)
    //  console.log(req.query.t)
    //  console.log(req.query.nv)
-    let tema =req.query.t;
-    const nv =req.query.nv;
+   //  let tema =req.query.t;
+   //  const nv =req.query.nv;
+    let tema='tema111';
+    const nv=6;
 
     pool.query(`SELECT * FROM ${tema} WHERE nomvoprosa = $1`, [nv], (error, results) => {
         if (error) {
@@ -115,4 +133,6 @@ module.exports = {
     getQuestion,
     postQuestion,
     postAmountCount,
+    getQuestionAll,
+    getQuestionAllName,
 }

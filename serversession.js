@@ -4,6 +4,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const config = require("config");
 const appController = require("./controllers/appController");
+const cors=require("cors");
 const isAuth = require("./middleware/is-auth");
 const connectDB = require("./config/dbMn");
 const dbPg = require('./controllers/queries');
@@ -16,7 +17,9 @@ const store = new MongoDBStore({
     collection: "mySessions",
 });
 
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.set("view engine", "ejs");
+
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -47,6 +50,8 @@ app.post("/logout", appController.logout_post);
 //------------------------------------------------------------
 app.get("/api/auth",appController.ApiAuth_get);//authentication
 app.get('/api/nom', dbPg.getQuestion);//access to questions
+app.get('/api/tema', dbPg.getQuestionAll);//access to questions
+app.get('/api/themesname',isAuth, dbPg.getQuestionAllName);//access to questions
 app.post('/api/post', dbPg.postQuestion);//access to questions
 app.post('/api/count', dbPg.postAmountCount);//access to questions
 //------------------------------------------------------------
