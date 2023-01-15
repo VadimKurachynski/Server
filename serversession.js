@@ -50,8 +50,8 @@ app.post("/logout", appController.logout_post);
 //------------------------------------------------------------
 app.get("/api/auth",appController.ApiAuth_get);//authentication
 app.get('/api/nom', dbPg.getQuestion);//access to questions
-app.get('/api/tema', dbPg.getQuestionAll);//access to questions
-app.get('/api/themesname',isAuth, dbPg.getQuestionAllName);//access to questions
+app.get('/api/theme', dbPg.getQuestionAll);//access to questions
+app.get('/api/themesname', dbPg.getQuestionAllName);//access to questions
 app.post('/api/post', dbPg.postQuestion);//access to questions
 app.post('/api/count', dbPg.postAmountCount);//access to questions
 //------------------------------------------------------------

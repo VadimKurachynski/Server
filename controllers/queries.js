@@ -14,10 +14,10 @@ const getQuestionAllName = (req, res) => {
 
 
 
-
 const getQuestionAll = (req, res) => {
-    let tema='tema111';
-    pool.query(`SELECT * FROM ${tema}`, (error, results) => {
+    console.log(req.query.numberTheme)
+    let theme=`theme${req.query.numberTheme}`;
+    pool.query(`SELECT * FROM ${theme}`, (error, results) => {
         if (error) {
             throw error
         }
