@@ -28,11 +28,6 @@ const getQuestionAll = (req, res) => {
 
 
 const getQuestion = (req, res) => {
-   // const id = parseInt(req.params.id)
-   //  console.log(req.query.t)
-   //  console.log(req.query.nv)
-   //  let tema =req.query.t;
-   //  const nv =req.query.nv;
     let tema='tema111';
     const nv=6;
 
