@@ -17,7 +17,7 @@ const store = new MongoDBStore({
     collection: "mySessions",
 });
 
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, origin: 'http://localhost:3001'}));
 app.set("view engine", "ejs");
 
 app.use(bodyParser.json());
@@ -33,6 +33,8 @@ app.use(
 );
 
 //------------------------------------------------------------
+app.post("/login", appController.login_post);
+app.post("/logout", appController.logout_post);
 app.get("/api/auth",appController.ApiAuth_get);//authentication
 app.get('/api/theme', isAuth,dbPg.getQuestionAll);//access to questions
 app.get('/api/themesname', dbPg.getQuestionAllName);//access to questions
