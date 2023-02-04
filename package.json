@@ -2,9 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index222.js",
+  "main": "serversession.js",
   "scripts": {
-    "start": "node txt/History.js",
+    "start": "node serversession.js",
     "dev": "nodemon serversession.js"
   },
   "repository": {
