@@ -11,7 +11,9 @@ const dbPg = require('./controllers/queries');
 const mongoURI = config.get("mongoURI");
 const app = express();
 const port = 5001;
+console.log("тут1")
 connectDB();
+console.log("тут2")
 const store = new MongoDBStore({
     uri: mongoURI,
     collection: "mySessions",
