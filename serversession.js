@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post("/login", appController.login_post);
 app.post("/logout", appController.logout_post);
 app.get("/api/auth",appController.ApiAuth_get);//authentication
-app.get('/api/theme', isAuth,dbPg.getQuestionAll);//access to questions
+// app.get('/api/theme', isAuth,dbPg.getQuestionAll);//access to questions
 app.get('/api/themesname', dbPg.getQuestionAllName);//access to questions
 
 //------------------------------------------------------------
