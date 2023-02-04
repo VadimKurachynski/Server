@@ -32,7 +32,6 @@ app.use(express.urlencoded({ extended: true }));
 //         store: store,
 //     })
 // );
-
 //------------------------------------------------------------
 app.post("/login", appController.login_post);
 app.post("/logout", appController.logout_post);
@@ -41,7 +40,6 @@ app.get("/api/auth",appController.ApiAuth_get);//authentication
 app.get('/api/themesname', dbPg.getQuestionAllName);//access to questions
 
 //------------------------------------------------------------
-
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)
 })
