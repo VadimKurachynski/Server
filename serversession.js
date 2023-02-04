@@ -16,7 +16,6 @@ const store = new MongoDBStore({
     uri: mongoURI,
     collection: "mySessions",
 });
-
 app.use(cors({credentials: true, origin: 'http://localhost:3001'}));
 app.set("view engine", "ejs");
 
