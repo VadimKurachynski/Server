@@ -10,7 +10,7 @@ const connectDB = require("./config/dbMn");
 const dbPg = require('./controllers/queries');
 const mongoURI = config.get("mongoURI");
 const app = express();
-const port = 5000;
+const port = 5001;
 connectDB();
 const store = new MongoDBStore({
     uri: mongoURI,
