@@ -6,13 +6,13 @@ const config = require("config");
 const appController = require("./controllers/appController");
 const cors=require("cors");
 const isAuth = require("./middleware/is-auth");
-// const connectDB = require("./config/dbMn");
+const connectDB = require("./config/dbMn");
 const dbPg = require('./controllers/queries');
 const mongoURI = config.get("mongoURI");
 const app = express();
 const port = 5001;
 console.log("тут1")
-// connectDB();
+connectDB();
 console.log("тут2")
 // const store = new MongoDBStore({
 //     uri: mongoURI,
