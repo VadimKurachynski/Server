@@ -17,7 +17,7 @@ const store = new MongoDBStore({
     collection: "mySessions",
 });
 app.use(cors({credentials: true, origin: 'http://localhost:3001'}));
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
