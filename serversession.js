@@ -34,7 +34,7 @@ const store = new MongoDBStore({
 
  connectDB();
 
-app.use(cors({credentials: true, origin: 'http://test.operate.su:3001'}));
+app.use(cors({credentials: true, origin: 'http://test.operate.su'}));
 // app.set("view engine", "ejs");
 
 app.use(bodyParser.json());
