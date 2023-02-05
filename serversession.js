@@ -6,16 +6,12 @@ const config = require('config');
 const appController = require('./controllers/appController');
 const cors=require("cors");
 const isAuth = require("./middleware/is-auth");
-// const connectDB = require('./config/dbMn');
 const dbPg = require('./controllers/queries');
 const mongoose = require("mongoose");
-// const mongoURI = config.get('mongoURI');
-mongoURI="mongodb://127.0.0.1:27017/sessions";
-// const dbMn = config.get('mongoURI')
 mongoose.set('strictQuery', false);
 const app = express();
 const port = 5001;
-console.log("тут1")
+mongoURI="mongodb://127.0.0.1:27017/sessions";
 
 const connectDB = async () => {
     try {
@@ -30,19 +26,14 @@ const connectDB = async () => {
     }
 };
 
-
-
- connectDB();
-
-
-
-
-
-console.log("тут2")
 const store = new MongoDBStore({
     uri: mongoURI,
     collection: "mySessions",
 });
+
+
+ connectDB();
+
 app.use(cors({credentials: true, origin: 'http://localhost:3001'}));
 // app.set("view engine", "ejs");
 
@@ -61,7 +52,7 @@ app.use(
 app.post("/login", appController.login_post);
 app.post("/logout", appController.logout_post);
 app.get("/api/auth",appController.ApiAuth_get);//authentication
-// app.get('/api/theme', isAuth,dbPg.getQuestionAll);//access to questions
+app.get('/api/theme', isAuth,dbPg.getQuestionAll);//access to questions
 app.get('/api/themesname', dbPg.getQuestionAllName);//access to questions
 
 //------------------------------------------------------------
