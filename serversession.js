@@ -8,7 +8,7 @@ const cors=require("cors");
 const isAuth = require("./middleware/is-auth");
 const dbPg = require('./controllers/queries');
 const mongoose = require("mongoose");
-const configMy=require("/config/configMy")
+const configMy=require('./config/configMy')
 mongoose.set('strictQuery', false);
 const app = express();
 const port = 5001;
