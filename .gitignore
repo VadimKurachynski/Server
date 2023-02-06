@@ -1,7 +1,7 @@
 /node_modules
 /config/dbPg.js
 config/dbPg.js
-config/configMy.js
+config/config.js
 /config
 /запуск сервера 5000 порт.bat
 /запуск сервера 5000 порт.bat — ярлык.lnk

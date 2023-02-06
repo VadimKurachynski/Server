@@ -8,12 +8,13 @@ const cors=require("cors");
 const isAuth = require("./middleware/is-auth");
 const dbPg = require('./controllers/queries');
 const mongoose = require("mongoose");
-const configMy=require('./config/configMy')
+const configMy=require('./config/config')
 mongoose.set('strictQuery', false);
 const app = express();
-const port = 5001;
+const port = configMy.Port;
+const URI=configMy.URImy;
 mongoURI="mongodb://127.0.0.1:27017/sessions";
-// console.log(process.env);
+ console.log(process.env);
 const connectDB = async () => {
     try {
         await mongoose.connect(mongoURI, {
@@ -27,6 +28,7 @@ const connectDB = async () => {
     }
 };
 
+
 const store = new MongoDBStore({
     uri: mongoURI,
     collection: "mySessions",
@@ -34,7 +36,7 @@ const store = new MongoDBStore({
 
  connectDB();
 
-app.use(cors({credentials: true, origin: `${configMy.URImy}`}));
+app.use(cors({credentials: true, origin: `${URI}`}));
 // app.set("view engine", "ejs");
 
 app.use(bodyParser.json());
