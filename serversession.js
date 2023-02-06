@@ -8,11 +8,12 @@ const cors=require("cors");
 const isAuth = require("./middleware/is-auth");
 const dbPg = require('./controllers/queries');
 const mongoose = require("mongoose");
+const configMy=require("/config/configMy")
 mongoose.set('strictQuery', false);
 const app = express();
 const port = 5001;
 mongoURI="mongodb://127.0.0.1:27017/sessions";
-
+// console.log(process.env);
 const connectDB = async () => {
     try {
         await mongoose.connect(mongoURI, {
@@ -31,10 +32,9 @@ const store = new MongoDBStore({
     collection: "mySessions",
 });
 
-
  connectDB();
 
-app.use(cors({credentials: true, origin: 'http://test.operate.su'}));
+app.use(cors({credentials: true, origin: `${configMy.URImy}`}));
 // app.set("view engine", "ejs");
 
 app.use(bodyParser.json());
